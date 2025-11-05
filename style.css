@@ -1,0 +1,946 @@
+/* === تنظیمات کلی === */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    line-height: 1.7;
+    direction: rtl;
+    overflow-x: hidden;
+}
+
+canvas#starCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+/* === هدر === */
+.modern-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 5%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.logo-text {
+    font-weight: 600;
+    font-size: 20px;
+    color: #ff6b35;
+}
+
+.nav-menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    font-size: 16px;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ff6b35;
+    transition: all 0.3s;
+    transform: translateX(-50%);
+}
+
+.nav-links a:hover {
+    color: #ff6b35;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+}
+
+.contact-icon {
+    display: flex;
+    align-items: center;
+}
+
+/* === دکمه‌های عمومی === */
+.cta-button,
+.property-button,
+.contact-button,
+.about-button,
+.modal-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 15px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* دکمه نارنجی */
+.cta-button.orange {
+    background: #ff6b35 !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+}
+.cta-button.orange:hover {
+    background: #e55a2b !important;
+    transform: translateY(-3px);
+}
+
+/* دکمه مشکی */
+.black {
+    background: #1a1a1a !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+.black:hover {
+    background: #000 !important;
+    transform: translateY(-2px);
+}
+
+/* === نوار آمار === */
+.stats-bar {
+    text-align: center;
+    padding: 12px 0;
+    background:#1a1a2e;
+    color: #fefefe;
+    font-size: 15px;
+    margin-top: 70px;
+}
+
+/* === اسلایدر — بدون کادر، بدون دکمه، مخصوص عکس عمودی === */
+.slider-container {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 600px;
+    margin: 70px auto 0;
+    background: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* بدون کادر، بدون سایه */
+}
+
+.slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f8f9fa;
+}
+
+.slide.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.slide img {
+    max-width: 90%;
+    max-height: 90%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* دکمه‌های قبلی/بعدی حذف شدن — فقط کد باقی موند برای اسلاید خودکار */
+.slider-prev,
+.slider-next {
+    display: none !important; /* کاملاً حذف */
+}
+
+/* === بخش خانه === */
+#home {
+    padding: 90px 5% 120px !important;
+}
+
+.hero {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero h1 {
+    font-size: 42px;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* === آگهی‌ها === */
+#properties {
+    padding: 80px 5% 90px !important;
+}
+
+#properties h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+.filter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-button {
+    padding: 10px 25px;
+    border: 2px solid #ddd;
+    background: white;
+    border-radius: 30px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-button.active,
+.filter-button:hover {
+    background: #ff6b35;
+    color: white;
+    border-color: #ff6b35;
+}
+
+.property-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.property-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.property-card:hover {
+    transform: translateY(-10px);
+}
+
+.property-gallery {
+    position: relative;
+    height: 220px;
+    overflow: hidden;
+}
+
+.gallery-image {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-image.active {
+    opacity: 1;
+}
+
+.gallery-prev, .gallery-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.gallery-prev { right: 10px; }
+.gallery-next { left: 10px; }
+
+.property-card h3 {
+    padding: 20px 20px 10px;
+    font-size: 20px;
+    color: #222;
+}
+
+.property-card > p {
+    padding: 0 20px;
+    color: #666;
+    font-size: 15px;
+}
+
+.price {
+    font-weight: 700;
+    color: #ff6b35;
+    font-size: 18px;
+    margin: 10px 20px;
+}
+
+.price-per-meter {
+    color: #007bff;
+    font-size: 15px;
+    margin: 5px 20px 15px;
+}
+
+.features {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0 20px;
+    margin-bottom: 15px;
+}
+
+.features li {
+    background: #f0f4f8;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 13px;
+    color: #555;
+}
+
+/* توضیحات با بیشتر/کمتر */
+.description-wrapper {
+    position: relative;
+    overflow: hidden;
+    max-height: 120px;
+    transition: max-height 0.4s ease;
+    padding: 0 20px;
+}
+
+.description-wrapper.expanded {
+    max-height: 1000px;
+}
+
+.description {
+    white-space: pre-line;
+    color: #444;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.toggle-desc {
+    background: none;
+    border: none;
+    color: #007bff;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 10px 20px 15px;
+    display: block;
+    font-weight: 600;
+}
+
+.toggle-desc i {
+    transition: transform 0.3s;
+}
+
+.description-wrapper.expanded .toggle-desc i {
+    transform: rotate(180deg);
+}
+
+.property-button {
+    margin: 0 10px 20px;
+    width: calc(50% - 20px);
+    justify-content: center;
+}
+
+.property-button:nth-child(odd) {
+    margin-right: 0;
+}
+
+/* === درباره ما === */
+#about {
+    padding: 100px 5% !important;
+    background: #f8f9fa;
+    text-align: center;
+}
+
+#about h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #222;
+}
+
+#about p {
+    max-width: 700px;
+    margin: 0 auto 30px;
+    font-size: 18px;
+    color: #555;
+}
+
+.about-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+    flex-wrap: wrap;
+}
+
+.about-button {
+    padding: 12px 20px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s;
+}
+
+/* === تماس با ما === */
+#contact {
+    padding: 90px 5% 100px !important;
+}
+
+#contact h2 {
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #222;
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 50px;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-info a {
+    display: block;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    border-radius: 15px;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-family: inherit;
+}
+
+.contact-form button {
+    width: 100%;
+    background: #ff6b35;
+    color: white;
+}
+
+.map {
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* === فوتر === */
+footer {
+    background: #1a1a1a;
+    color: #ccc;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+footer p {
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.social-button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    transition: all 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.social-button:hover {
+    transform: translateY(-5px) scale(1.1);
+}
+
+/* === رنگ‌های شبکه‌های اجتماعی === */
+.whatsapp {
+    background: #25d366 !important;
+    color: white !important;
+}
+.contact-button.whatsapp,
+.social-button.whatsapp {
+    background: #00ff88 !important;
+    color: #075e54 !important;
+    box-shadow: 0 0 20px rgba(0, 255, 136, 0.6);
+}
+
+.telegram {
+    background: #0088cc !important;
+    color: white !important;
+}
+
+.instagram,
+.contact-button.instagram,
+.social-button.instagram {
+    background: linear-gradient(135deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important;
+    color: white !important;
+    animation: none !important;
+    box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+}
+.instagram:hover,
+.contact-button.instagram:hover,
+.social-button.instagram:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(220, 39, 67, 0.5);
+}
+
+/* === مودال === */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 20px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    padding: 30px;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 28px;
+    cursor: pointer;
+    color: #aaa;
+    z-index: 10;
+}
+
+.modal-gallery {
+    position: relative;
+    height: 400px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+#modal-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-prev, .modal-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.6);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.modal-prev { right: 15px; }
+.modal-next { left: 15px; }
+
+#modal-title {
+    font-size: 24px;
+    margin: 15px 0;
+    color: #222;
+}
+
+#modal-features {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 15px 0;
+}
+
+#modal-features li {
+    background: #f0f4f8;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+#modal-description {
+    white-space: pre-line;
+    color: #444;
+    line-height: 1.8;
+    margin: 15px 0;
+}
+
+.modal-button {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    background: #ff6b35;
+    color: white;
+}
+
+/* === ریسپانسیو === */
+@media (max-width: 992px) {
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        padding: 20px 0;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .contact-icon {
+        display: none;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .slider-container {
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .property-button {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .contact-content {
+        flex-direction: column;
+    }
+}
+/* رفع چسبیدن حروف در توضیحات */
+.description {
+    white-space: pre-line !important;
+    word-wrap: break-word;
+    line-height: 1.8;
+}
+/* === کادر سورمه‌ای مایل به سیاه برای hero === */
+.hero {
+    background: #1a1a2e;
+    color: white;
+    padding: 40px 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    margin: 0 auto 60px;
+    border: 2px solid #16213e;
+    text-align: center;
+}
+
+.hero h1, .hero p {
+    color: white;
+}
+
+/* === کادر سورمه‌ای برای درباره ما === */
+#about {
+    background: #1a1a2e;
+    color: white;
+    padding: 50px 30px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 900px;
+    margin: 0 auto;
+    border: 2px solid #16213e;
+    text-align: center;
+}
+
+#about h2, #about p {
+    color: white;
+}
+
+/* === کادر سورمه‌ای لبه‌گرد برای لوگو در فوتر === */
+.footer-logo-container {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #1a1a2e;
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    margin: 0 auto 20px;
+    width: fit-content;
+    border: 2px solid #16213e;
+}
+
+.footer-logo-image {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff6b35;
+}
+
+.footer-logo-text {
+    font-weight: 600;
+    font-size: 19px;
+    color: white;
+}
+
+/* === رفع کامل چسبیدن حروف در توضیحات === */
+.description {
+    white-space: pre-line !important;
+    word-wrap: break-word;
+    line-height: 1.9 !important;
+    font-size: 15px;
+    color: #444;
+    padding: 0 20px;
+}
+
+#modal-description {
+    white-space: pre-line !important;
+    line-height: 1.9 !important;
+    font-size: 15px;
+    color: #444;
+}
+/* === فوتر: کادر مشکی لبه‌گرد (بدون بیضی) === */
+.footer-rounded {
+    background: #1a1a2e;
+    padding: 40px 20px;
+    border-radius: 30px;
+    margin: 60px 5% 0;
+    max-width: 1200px;
+    width: calc(100% - 10%);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    border: 2px solid #16213e;
+}
+
+.footer-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.footer-logo-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff6b35;
+}
+
+.footer-logo-text {
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+}
+
+/* === لوکیشن آگهی‌ها === */
+.location {
+    color: #ff6b35;
+    font-weight: 600;
+    font-size: 15px;
+    margin: 8px 20px 5px;
+}
+
+/* === رفع کامل چسبیدن حروف در توضیحات === */
+.description {
+    white-space: pre-line !important;
+    word-wrap: break-word;
+    line-height: 2 !important;
+    font-size: 15px;
+    color: #444;
+    padding: 0 20px;
+}
+
+#modal-description {
+    white-space: pre-line !important;
+    line-height: 2 !important;
+    font-size: 15px;
+    color: #444;
+}
+/* === توضیحات آگهی‌ها — ۱۰۰٪ درست، خوانا، فاصله‌دار === */
+.description {
+    white-space: pre-line !important;
+    word-wrap: break-word;
+    line-height: 2.2 !important;     /* فاصله عالی بین خطوط */
+    font-size: 15px !important;
+    color: #444 !important;
+    margin: 12px 20px !important;
+    padding: 0 !important;
+}
+
+/* وقتی "بیشتر" زده میشه، فاصله حفظ بشه */
+.description-wrapper.expanded .description {
+    line-height: 2.2 !important;
+}
+
+/* در مودال هم ۱۰۰٪ درست */
+#modal-description {
+    white-space: pre-line !important;
+    line-height: 2.2 !important;
+    font-size: 15px !important;
+    color: #444 !important;
+    margin: 15px 0 !important;
+    padding: 0 10px !important;
+}
+
+/* دکمه "بیشتر" هم فاصله داشته باشه */
+.toggle-desc {
+    margin: 15px 20px 10px !important;
+    font-size: 14.5px !important;
+}
+.description {
+    white-space: pre-line !important;
+    line-height: 2.1 !important;
+    font-size: 15px !important;
+    color: #444 !important;
+    margin: 12px 20px !important;
+}

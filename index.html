@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>املاک ایمان اسدپور - کیش</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="logo.ico">
+</head>
+<body>
+    <canvas id="starCanvas"></canvas>
+
+    <!-- Header -->
+    <header class="modern-header">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="logo.ico" alt="لوگو" class="logo-image">
+                <div class="logo-text">املاک ایمان اسدپور</div>
+            </div>
+            <nav class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="#home">خانه</a></li>
+                    <li><a href="#properties">آگهی‌ها</a></li>
+                    <li><a href="#about">درباره ما</a></li>
+                    <li><a href="#contact">تماس</a></li>
+                </ul>
+                <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+            </nav>
+            <div class="contact-icon">
+                <a href="tel:+989123909256" class="cta-button orange"><i class="fas fa-phone"></i> تماس</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Bar -->
+    <div class="stats-bar">
+        <p>تعداد بازدید: <span id="visitCount">0</span></p>
+    </div>
+
+    <!-- اسلایدر — بالای متن -->
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide active">
+                <img src="images/slide.jpg" alt="اسلاید ۱" onerror="this.src='https://via.placeholder.com/1080x1620/1a1a1a/ffffff?text=تصویر+عمودی+۱';">
+            </div>
+            <div class="slide">
+                <img src="images/slide(1).jpg" alt="اسلاید ۲" onerror="this.src='https://via.placeholder.com/1080x1620/1a1a1a/ffffff?text=تصویر+عمودی+۲';">
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero — کادر سورمه‌ای لبه‌گرد -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>خانه رویایتان در کیش منتظر‌شماست!</h1>
+                <p>مشاور املاک حرفه‌ای با ۱۰ سال تجربه در معاملات لوکس کیش. از آپارتمان‌های ساحلی با ویو خلیج فارس تا ویلاهای سرمایه‌گذاری سودآور، ما شما را به بهترین‌ها هدایت می‌کنیم.</p>
+                <a href="tel:+989123909256" class="cta-button orange"><i class="fas fa-phone"></i> تماس با ما</a>
+            </div>
+        </section>
+
+        <!-- Properties -->
+        <section id="properties" class="properties">
+            <h2>آگهی‌های املاک</h2>
+            <div class="filter-buttons">
+                <button class="filter-button active" data-filter="all">همه</button>
+                <button class="filter-button" data-filter="apartment">آپارتمان</button>
+                <button class="filter-button" data-filter="villa">ویلا</button>
+                <button class="filter-button" data-filter="commercial">تجاری</button>
+            </div>
+            <div class="property-grid">
+                <!-- آگهی ۱ -->
+                <div class="property-card" data-type="apartment">
+                    <div class="property-gallery">
+                        <img src="images/agahi1-2 (1).jpg" alt="آگهی ۱" class="gallery-image active" data-index="0">
+                        <img src="images/agahi1-2 (2).jpg" alt="آگهی ۱" class="gallery-image" data-index="1">
+                        <img src="images/agahi1-2 (3).jpg" alt="آگهی ۱" class="gallery-image" data-index="2">
+                        <img src="images/agahi1-2 (4).jpg" alt="آگهی ۱" class="gallery-image" data-index="3">
+                        <img src="images/agahi1-2 (5).jpg" alt="آگهی ۱" class="gallery-image" data-index="4">
+                        <button class="gallery-prev"><i class="fas fa-chevron-right"></i></button>
+                        <button class="gallery-next"><i class="fas fa-chevron-left"></i></button>
+                    </div>
+                    <h3>متر دوخواب تراس بزرگ نوبنیاد ۳</h3>
+                    <p class="location">کیش، میدان نوبنیاد</p>
+                    <p class="price">قیمت کل: ۱۰,۳۰۰,۰۰۰,۰۰۰ تومان</p>
+                    <p class="price-per-meter">هر متر: ۱۰۷,۲۹۱,۰۰۰ تومان</p>
+                    <ul class="features">
+                        <li><i class="fas fa-elevator"></i> آسانسور</li>
+                        <li><i class="fas fa-parking"></i> پارکینگ</li>
+                        <li><i class="fas fa-ban"></i> انباری ندارد</li>
+                        <li><i class="fas fa-layer-group"></i> طبقه ۳</li>
+                    </ul>
+                    <div class="description-wrapper">
+                        <p class="description">
+                            با درود
+                            دو خواب
+                            ۷۰ متر تراس رایگان
+                            دو سرویس مستر
+                            سالن رو به نما
+                            پارکینگ
+                            نما چهار طرف سنگ
+                            مشاعات کامل سنگ
+                            طبقه ۳
+                            نورگیر فوق العاده
+                            احتیاج به نقاشی دارد
+                            همسایگان عالی
+                            در رهن مستاجر تا آخر پاییز به مبلغ ۱.۱۰۰ میلیارد
+                            بازدید بعد از ظهر ها
+                            اسدپور
+                            فروش آپارتمان
+                        </p>
+                        <button class="toggle-desc">بیشتر <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <a href="tel:+989123909256" class="property-button"><i class="fas fa-phone"></i> تماس</a>
+                    <button class="property-button view-ad"><i class="fas fa-eye"></i> مشاهده</button>
+                </div>
+
+                <!-- آگهی ۲ -->
+                <div class="property-card" data-type="apartment">
+                    <div class="property-gallery">
+                        <img src="images/agahi1-3 (1).jpg" alt="آگهی ۲" class="gallery-image active" data-index="0">
+                        <img src="images/agahi1-3 (2).jpg" alt="آگهی ۲" class="gallery-image" data-index="1">
+                        <img src="images/agahi1-3 (3).jpg" alt="آگهی ۲" class="gallery-image" data-index="2">
+                        <img src="images/agahi1-3 (4).jpg" alt="آگهی ۲" class="gallery-image" data-index="3">
+                        <button class="gallery-prev"><i class="fas fa-chevron-right"></i></button>
+                        <button class="gallery-next"><i class="fas fa-chevron-left"></i></button>
+                    </div>
+                    <h3>۱۳۰ متر ۳ خواب فاز ۷ صدف کلید نخورده</h3>
+                    <p class="location">کیش، خ توسعه سیاحتی</p>
+                    <p class="price">قیمت کل: ۲۳,۰۰۰,۰۰۰,۰۰۰ تومان</p>
+                    <p class="price-per-meter">هر متر: ۱۷۶,۹۲۳,۰۰۰ تومان</p>
+                    <ul class="features">
+                        <li><i class="fas fa-elevator"></i> آسانسور</li>
+                        <li><i class="fas fa-parking"></i> پارکینگ</li>
+                        <li><i class="fas fa-warehouse"></i> انباری</li>
+                        <li><i class="fas fa-layer-group"></i> طبقه ۶</li>
+                    </ul>
+                    <div class="description-wrapper">
+                        <p class="description">
+                            با درود
+                            ۱۳۰ متر ۳ خواب
+                            ۳ سرویس
+                            بدون مشرف
+                            بهترین لوکیشن
+                            جنب بازار و مرکز خرید
+                            استخر و سونا و جکوزی
+                            باشگاه بدنسازی
+                            ۵۰۰ متر لابی
+                            سالن اجتماعات
+                            سالن یوگا
+                            سالن مطالعه
+                            شوتینگ زباله
+                            لابی من ۲۴ ساعته
+                            پارکینگ مسقف
+                            رهن هم داده میشود به مبلغ ۳,۳۰۰ میلیارد
+                            اسدپور
+                            فروش آپارتمان
+                        </p>
+                        <button class="toggle-desc">بیشتر <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <a href="tel:+989123909256" class="property-button"><i class="fas fa-phone"></i> تماس</a>
+                    <button class="property-button view-ad"><i class="fas fa-eye"></i> مشاهده</button>
+                </div>
+
+                <!-- آگهی ۳ -->
+                <div class="property-card" data-type="apartment">
+                    <div class="property-gallery">
+                        <img src="images/agahi1-4 (1).jpg" alt="آگهی ۳" class="gallery-image active" data-index="0">
+                        <img src="images/agahi1-4 (2).jpg" alt="آگهی ۳" class="gallery-image" data-index="1">
+                        <img src="images/agahi1-4 (3).jpg" alt="آگهی ۳" class="gallery-image" data-index="2">
+                        <button class="gallery-prev"><i class="fas fa-chevron-right"></i></button>
+                        <button class="gallery-next"><i class="fas fa-chevron-left"></i></button>
+                    </div>
+                    <h3>یکخواب ۶۷ متری نوبنیاد ۳</h3>
+                    <p class="location">کیش، خ کندوان چهارم</p>
+                    <p class="price">قیمت کل: ۷,۰۰۰,۰۰۰,۰۰۰ تومان</p>
+                    <p class="price-per-meter">هر متر: ۱۰۴,۴۷۷,۰۰۰ تومان</p>
+                    <ul class="features">
+                        <li><i class="fas fa-elevator"></i> آسانسور</li>
+                        <li><i class="fas fa-parking"></i> پارکینگ</li>
+                        <li><i class="fas fa-ban"></i> انباری ندارد</li>
+                        <li><i class="fas fa-layer-group"></i> طبقه ۱</li>
+                    </ul>
+                    <div class="description-wrapper">
+                        <p class="description">
+                            با درود
+                            یکخواب
+                            کامل رو به نما
+                            نما بسیار جذاب
+                            کابینت نو
+                            رنگ و نقاشی کامل
+                            بدون هزینه
+                            قابلیت رهن تا ۹۵۰ میلیون ریال
+                            نورگیر عالی
+                            همسایگان عالی
+                            شخصی ساز
+                            فروش آپارتمان
+                        </p>
+                        <button class="toggle-desc">بیشتر <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <a href="tel:+989123909256" class="property-button"><i class="fas fa-phone"></i> تماس</a>
+                    <button class="property-button view-ad"><i class="fas fa-eye"></i> مشاهده</button>
+                </div>
+
+                <!-- آگهی ۴ -->
+                <div class="property-card" data-type="commercial">
+                    <div class="property-gallery">
+                        <img src="images/agahi1-5 (1).jpg" alt="غرفه" class="gallery-image active" data-index="0">
+                        <img src="images/agahi1-5 (2).jpg" alt="غرفه" class="gallery-image" data-index="1">
+                        <button class="gallery-prev"><i class="fas fa-chevron-right"></i></button>
+                        <button class="gallery-next"><i class="fas fa-chevron-left"></i></button>
+                    </div>
+                    <h3>فروش غرفه ۶۴ متری میکا مال</h3>
+                    <p class="location">کیش، میدان پدر</p>
+                    <p class="price">قیمت کل: ۳۵,۰۰۰,۰۰۰,۰۰۰ تومان</p>
+                    <p class="price-per-meter">هر متر: ۵۴۶,۸۷۵,۰۰۰ تومان</p>
+                    <ul class="features">
+                        <li>روبروی آسانسور</li>
+                        <li>پارکینگ عمومی</li>
+                    </ul>
+                    <div class="description-wrapper">
+                        <p class="description">
+                            با درود
+                            فروش غرفه در یکی از بهترین لوکیشن های کیش
+                            میکا مال
+                            رو ب روی آسانسور
+                            کنار یکی از بهترین برندهای موجود در میکا
+                            بدون هیچگونه ایراد
+                            آماده واگذاری و تهاتر با مسکونی
+                            اجاره داده میشود
+                            اسدپور
+                            فروش مغازه و غرفه
+                        </p>
+                        <button class="toggle-desc">بیشتر <i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <a href="tel:+989123909256" class="property-button"><i class="fas fa-phone"></i> تماس</a>
+                    <button class="property-button view-ad"><i class="fas fa-eye"></i> مشاهده</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About — کادر سورمه‌ای لبه‌گرد -->
+        <section id="about" class="about">
+            <h2>ایمان اسدپور</h2>
+            <p>۱۵ سال تجربه در املاک لوکس کیش. بیش از ۵۰۰ معامله موفق. شریک موفقیت شما.</p>
+            <div class="about-buttons">
+                <a href="tel:+989123909256" class="about-button black"><i class="fas fa-phone"></i> تماس</a>
+                <a href="https://wa.me/989123909256" target="_blank" rel="noopener" class="about-button whatsapp"><i class="fab fa-whatsapp"></i> واتساپ</a>
+                <a href="https://t.me/+989123909256" target="_blank" rel="noopener" class="about-button telegram"><i class="fab fa-telegram"></i> تلگرام</a>
+            </div>
+        </section>
+
+        <!-- Contact -->
+        <section id="contact" class="contact">
+            <h2>تماس با ما</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <a href="tel:+989123909256" class="contact-button black"><i class="fas fa-phone"></i> 09123909256</a>
+                    <a href="https://wa.me/989123909256?text=سلام%20از%20سایت%20رسیدم%20و%205%25%20تخفیف%20می‌خوام" class="contact-button whatsapp" target="_blank" rel="noopener">
+                        <i class="fab fa-whatsapp"></i> واتساپ (۵٪ تخفیف)
+                    </a>
+                    <a href="https://t.me/+989123909256?text=سلام%20از%20سایت%20رسیدم%20و%205%25%20تخفیف%20می‌خوام" class="contact-button telegram" target="_blank" rel="noopener">
+                        <i class="fab fa-telegram"></i> تلگرام (۵٪ تخفیف)
+                    </a>
+                    <a href="https://ig.me/m/amlak_iman_kish?text=سلام%20از%20سایت%20رسیدم%20و%205%25%20تخفیف%20می‌خوام" class="contact-button instagram" target="_blank" rel="noopener">
+                        <i class="fab fa-instagram"></i> اینستاگرام (۵٪ تخفیف)
+                    </a>
+                </div>
+                <form class="contact-form" id="contactForm">
+                    <input type="text" id="name" placeholder="نام" required>
+                    <input type="tel" id="phone" placeholder="شماره" required>
+                    <textarea id="message" placeholder="پیام" required></textarea>
+                    <button type="submit" class="contact-button"><i class="fas fa-paper-plane"></i> ارسال پیام</button>
+                </form>
+            </div>
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14353.584!2d53.975!3d26.538!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b5f2e4d1b7e4a1f%3A0x4e6b9b7b2e6c4b7!2sKish!5e0!3m2!1sen!2sus!4v1697641234567" 
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer — کادر مشکی لبه‌گرد -->
+    <footer class="footer-rounded">
+        <div class="footer-logo-container">
+            <img src="logo.ico" alt="لوگو" class="footer-logo-image">
+            <div class="footer-logo-text">املاک ایمان اسدپور</div>
+        </div>
+        <p style="color: #aaa; font-size: 14px; margin: 15px 0;">© 2025 املاک ایمان اسدپور</p>
+        <div class="social-links">
+            <a href="https://instagram.com/amlak_iman_kish" target="_blank" rel="noopener" class="social-button instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://wa.me/989123909256?text=سلام%20از%20سایت%20رسیدم" target="_blank" rel="noopener" class="social-button whatsapp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://t.me/+989123909256" target="_blank" rel="noopener" class="social-button telegram"><i class="fab fa-telegram"></i></a>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal" id="property-modal">
+        <div class="modal-content">
+            <span class="close-modal">×</span>
+            <div class="modal-gallery">
+                <img id="modal-image" src="" alt="" class="modal-image active">
+                <button class="modal-prev"><i class="fas fa-chevron-right"></i></button>
+                <button class="modal-next"><i class="fas fa-chevron-left"></i></button>
+            </div>
+            <h2 id="modal-title"></h2>
+            <p id="modal-price" class="price"></p>
+            <p id="modal-price-per-meter" class="price-per-meter"></p>
+            <ul id="modal-features" class="features"></ul>
+            <p id="modal-description" class="description"></p>
+            <a href="tel:+989123909256" class="modal-button"><i class="fas fa-phone"></i> تماس</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
